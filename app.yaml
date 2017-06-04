@@ -1,0 +1,39 @@
+runtime: php55
+api_version: 1
+
+automatic_scaling:
+  min_idle_instances: automatic
+  max_idle_instances: 1
+  min_pending_latency: 3000ms
+  max_pending_latency: automatic
+
+handlers:
+- url: /Rule/Basic/Surge
+  script: /AppEngine/Basic/Surge.php
+- url: /Rule/Basic/Shadowrocket
+  script: /AppEngine/Basic/Shadowrocket.php
+- url: /Rule/Basic/A\.BIG\.T
+  script: /AppEngine/Basic/A.BIG.T.php
+- url: /Rule/Basic/Cross
+  script: /AppEngine/Basic/Cross.php
+- url: /Rule/Basic/Hosts
+  script: /AppEngine/Basic/Hosts.php
+- url: /Rule/Basic/Potatso
+  script: /AppEngine/Basic/Potatso.php
+- url: /Rule/Basic/Potatso2
+  script: /AppEngine/Basic/Potatso2.php
+- url: /Rule/Basic/Wingy
+  script: /AppEngine/Basic/Wingy.php
+
+- url: /Rule/JSON/Surge
+  script: /AppEngine/JSON/Surge.php
+- url: /Rule/JSON/Shadowrocket
+  script: /AppEngine/JSON/Shadowrocket.php
+- url: /Rule/JSON/A\.BIG\.T
+  script: /AppEngine/JSON/A.BIG.T.php
+- url: /Rule/JSON/Potatso
+  script: /AppEngine/JSON/Potatso.php
+- url: /Rule/JSON/Cross
+  script: /AppEngine/JSON/Cross.php
+- url: /Rule/JSON/Potatso2
+  script: /AppEngine/JSON/Potatso2.php
