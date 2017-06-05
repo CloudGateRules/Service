@@ -33,7 +33,8 @@ class Rules
                 'Host'     =>$ListsData->Host,
                 'YouTube'  =>$ListsData->YouTube,
                 'Rewrite'  =>$ListsData->Rewrite,
-                'MITM'     =>$ListsData->MITM
+                'MITM'     =>$ListsData->MITM,
+                'SKIP'     =>$ListsData->SKIP
             );
         }
     }
