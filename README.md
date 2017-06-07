@@ -1,7 +1,7 @@
 CloudGate Service
 ===========================
 CloudGate 多种规则生成服务 GoogleAppEngine Version<br>
-使用方法:New GAE Project->ClouShell->Success!
+使用方法:New GAE Project->CloudShell->Success!
 
 ## CloudShell Install
 ```
