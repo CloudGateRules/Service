@@ -5,7 +5,7 @@ class Rules
 
     
     /**
-     * GET RuleList Info Result
+     * 获取规则列表信息结果
      * @param $SubmitData [SubmitDataInfo]
      */
     public function getRuleListInfo($SubmitData)
@@ -15,33 +15,22 @@ class Rules
             global $RuleLists;
             $Modules   = new Modules;
             $Timestamp = $Modules->timestamp();
-            $ListsData = json_decode($Modules->CURL($SubmitData.$Timestamp));
-            $RuleLists = array
-            (
-                'General'  =>$ListsData->General,
-                'Apple'    =>$ListsData->Apple,
-                'Advanced' =>$ListsData->Advanced,
-                'Basic'    =>$ListsData->Basic,
-                'DIRECT'   =>$ListsData->DIRECT,
-                'REJECT'   =>$ListsData->REJECT,
-                'KEYWORD'  =>$ListsData->KEYWORD,
-                'URLREGEX' =>$ListsData->URLREGEX,
-                'USERAGENT'=>$ListsData->USERAGENT,
-                'IPCIDR6'  =>$ListsData->IPCIDR6,
-                'IPCIDR'   =>$ListsData->IPCIDR,
-                'Other'    =>$ListsData->Other,
-                'Host'     =>$ListsData->Host,
-                'YouTube'  =>$ListsData->YouTube,
-                'Rewrite'  =>$ListsData->Rewrite,
-                'MITM'     =>$ListsData->MITM,
-                'SKIP'     =>$ListsData->SKIP
-            );
+            if($SubmitData['Merge']!==NULL)
+            {
+            	$ListsData = json_decode($Modules->CURL($SubmitData['Lists'].$Timestamp),true);
+            	$MergeData = json_decode($Modules->CURL($SubmitData['Merge'].$Timestamp),true);
+            }
+            else{
+            	$ListsData = json_decode($Modules->CURL($SubmitData['Lists'].$Timestamp),true);
+                $MergeData = [];
+            }
+            $RuleLists = array_merge_recursive($ListsData,$MergeData);
         }
     }
 
 
     /**
-     * GET Hosts Interface Info Result
+     * 获取Hosts接口数据信息
      * @param $EngineInfo [EngineInfo]
      */
     public function getHostsInfo($EngineInfo)

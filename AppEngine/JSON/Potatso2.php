@@ -3,7 +3,7 @@
 header('Content-Disposition: attachment; filename='.'Potatso2.Conf');
 require_once "../Controller.php";
 
-@$Modules->GET().parse_str($REQUEST_QUERY_URI);
+@parse_str($Modules->GET());
 @$SubmitType->getSubmitInfoVerify($SubmitType->getSubmitInfoType($JSON),$EngineInfo);
 @$Rules->getRuleListInfo($SubmitType->getSubmitInfoList($CONFIGURATION));
 
@@ -16,7 +16,7 @@ echo"#\r\n";
 echo"[PROFILE.sample]\r\n";
 echo @$ProxyType->getServerInfo('Potatso2',$CONFIGURATION);
 
-$CONFIGURATION['General']['Rule']===true?$Proxy='Basic':$Proxy='Advanced';
+@$CONFIGURATION['General']['Rule']===true?$Proxy='Basic':$Proxy='Advanced';
 
 # CloudGate模块
 echo'[RULESET.CloudGate]'."\r\n";

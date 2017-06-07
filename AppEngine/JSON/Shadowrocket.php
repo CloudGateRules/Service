@@ -3,7 +3,7 @@
 header('Content-Disposition: attachment; filename='.'Shadowrocket');
 require_once "../Controller.php";
 
-@$Modules->GET().parse_str($REQUEST_QUERY_URI);
+@parse_str($Modules->GET());
 @$SubmitType->getSubmitInfoVerify($SubmitType->getSubmitInfoType($JSON),$EngineInfo);
 @$Rules->getRuleListInfo($SubmitType->getSubmitInfoList($CONFIGURATION));
 @$Auth->generateAuthKey();
@@ -15,7 +15,7 @@ echo "# Shadowrocket Config File [CloudGate]\r\n";
 echo "# Download Time: " . date("Y-m-d H:i:s") . "\r\n";
 echo "# \r\n";
 
-$CONFIGURATION['General']['Rule']===true?$Proxy='Basic':$Proxy='Advanced';
+@$CONFIGURATION['General']['Rule']===true?$Proxy='Basic':$Proxy='Advanced';
 
 echo $Rules->ruleReplace('Shadowrocket',$RuleLists['Apple'],$CONFIGURATION['SUFFIX']['Apple']);
 echo $Rules->ruleReplace('Shadowrocket',$RuleLists[$Proxy],$CONFIGURATION['SUFFIX']['Proxy']);

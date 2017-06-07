@@ -5,17 +5,18 @@ class Modules
 
 
     /**
-     * Request Query URI
+     * 获取请求数据信息
      */
     public function GET()
     {
-        global $REQUEST_QUERY_URI;
         $QUERY_URI = $_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
         $REQUEST_QUERY_URI = substr($QUERY_URI,(strpos($QUERY_URI,'?')+1));
+        return $REQUEST_QUERY_URI;
     }
 
 
     /**
+     * 获取时间戳数据信息
      * @return string
      */
     public function timestamp()
@@ -26,6 +27,7 @@ class Modules
 
 
     /**
+     * 字符串转换数组类型
      * @param $data
      * @param int $limit
      * @return array
@@ -38,6 +40,7 @@ class Modules
 
 
     /**
+     * PHP cURL请求模块
      * @param $FileURL
      * @return mixed
      */

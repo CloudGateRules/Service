@@ -3,9 +3,8 @@
 header('Content-Disposition: attachment; filename='.'Potatso.Conf');
 require_once ('../Controller.php');
 
-@$_GET['List']!==NULL?$List=$_GET['List']:$List=$EngineInfo['List'];
-@$SubmitType->getSubmitInfoVerify($SubmitType->getSubmitInfoType($List),$EngineInfo);
-@$Rules->getRuleListInfo($SubmitType->getSubmitInfoList($CONFIGURATION));
+@$_GET['List']!==NULL?$Info['Lists']=$_GET['List']:$Info['Lists']=$EngineInfo['List'];
+@$Rules->getRuleListInfo($Info);
 @$Auth->generateAuthKey();
 
 echo"ruleSets:\r\n";

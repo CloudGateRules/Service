@@ -3,9 +3,8 @@
 header('Content-Disposition: attachment; filename='.'Shadowrocket.Conf');
 require_once ('../Controller.php');
 
-@$_GET['List']!==NULL?$List=$_GET['List']:$List=$EngineInfo['List'];
-@$SubmitType->getSubmitInfoVerify($SubmitType->getSubmitInfoType($List),$EngineInfo);
-@$Rules->getRuleListInfo($SubmitType->getSubmitInfoList($CONFIGURATION));
+@$_GET['List']!==NULL?$Info['Lists']=$_GET['List']:$Info['Lists']=$EngineInfo['List'];
+@$Rules->getRuleListInfo($Info);
 @$Auth->generateAuthKey();
 
 echo $Rules->ruleReplace('Surge',$RuleLists['General']);
@@ -24,6 +23,8 @@ echo $Rules->ruleReplace('Shadowrocket',$RuleLists['IPCIDR'],'Proxy');
 echo $Rules->ruleReplace('Shadowrocket',$RuleLists['Other'],'Proxy');
 echo $Rules->ruleReplace('Shadowrocket',$RuleLists['Host']);
 echo $Rules->ruleReplace('Shadowrocket',$RuleLists['Rewrite'],null,AUTHKEY);
+@$SubmitType->getSubmitInfoVerify($SubmitType->getSubmitInfoType($EngineInfo['Example']),$EngineInfo);
+@$Rules->getRuleListInfo($SubmitType->getSubmitInfoList($CONFIGURATION));
 echo $ProxyType->getMitmInfo($CONFIGURATION,$RuleLists['MITM']);
 
 ?>

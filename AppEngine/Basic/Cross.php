@@ -3,9 +3,8 @@
 header('Content-Disposition: attachment; filename='.'Cross.Conf');
 require_once ('../Controller.php');
 
-@$_GET['List']!==NULL?$List=$_GET['List']:$List=$EngineInfo['List'];
-@$SubmitType->getSubmitInfoVerify($SubmitType->getSubmitInfoType($List),$EngineInfo);
-@$Rules->getRuleListInfo($SubmitType->getSubmitInfoList($CONFIGURATION));
+@$_GET['List']!==NULL?$Info['Lists']=$_GET['List']:$Info['Lists']=$EngineInfo['List'];
+@$Rules->getRuleListInfo($Info);
 @$Auth->generateAuthKey();
 
 echo "#  \r\n";
@@ -33,6 +32,8 @@ echo "[HOST]\r\n";
 echo $Rules->ruleReplace('Cross',$RuleLists['Host'],'PROXY');
 echo "[URL REWRITE]\r\n";
 echo $Rules->ruleReplace('Cross',$RuleLists['Rewrite'],null,AUTHKEY);
+@$SubmitType->getSubmitInfoVerify($SubmitType->getSubmitInfoType($EngineInfo['Example']),$EngineInfo);
+@$Rules->getRuleListInfo($SubmitType->getSubmitInfoList($CONFIGURATION));
 echo $ProxyType->getMitmInfo($CONFIGURATION,$RuleLists['MITM']);
 
 ?>

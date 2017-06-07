@@ -6,7 +6,7 @@ class SubmitType
 
 
     /**
-     * GET Submit Info Type Result
+     * 获取提交数据信息类型
      * @param $SubmitData [SubmitDataInfo]
      * @return mixed [DecodeResult]
      */
@@ -32,7 +32,7 @@ class SubmitType
 
 
     /**
-     * GET Submit Info Verify Result
+     * 获取提交数据验证结果
      * @param $SubmitData [DecodeDataInfo]
      * @param $EngineInfo [EngineDataInfo]
      */
@@ -56,15 +56,20 @@ class SubmitType
 
 
     /**
-     * GET Submit Info List Result
+     * 获取提交数据的规则列表和合并数据
      * @param $SubmitData [VerifyDataInfo]
      * @return mixed [RuleListInfo]
      */
     public function getSubmitInfoList($SubmitData)
     {
-        empty($SubmitData)?exit('JSON Information Error!'):true;
-        $SubmitInfoList = @$SubmitData['Other']['List'];
-        return $SubmitInfoList;
+        if(empty($SubmitData))
+        {
+            exit('JSON Information Error!');
+        }
+        return [
+            'Lists'=>@$SubmitData['Other']['List'],
+            'Merge'=>@$SubmitData['Other']['Merge']
+        ];
     }
 
 }

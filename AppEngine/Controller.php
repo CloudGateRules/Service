@@ -7,12 +7,12 @@ require_once('Modules/Auth_Class.php');
 require_once('Modules/Rules_Class.php');
 require_once('Modules/ProxyType_Class.php');
 
-//Raven_Autoloader::register();
-//$client = new Raven_Client('https://key@sentry.io/number');
-//$error_handler = new Raven_ErrorHandler($client);
-//$error_handler->registerExceptionHandler();
-//$error_handler->registerErrorHandler();
-//$error_handler->registerShutdownFunction();
+//Raven_Autoloader::register(); 
+//$client = new Raven_Client('https://key@sentry.io/number'); 
+//$error_handler = new Raven_ErrorHandler($client); 
+//$error_handler->registerExceptionHandler(); 
+//$error_handler->registerErrorHandler(); 
+//$error_handler->registerShutdownFunction(); 
 
 $SubmitType = new SubmitType;
 $Modules    = new Modules;
@@ -23,7 +23,8 @@ $ProxyType  = new ProxyType;
 $EngineInfo = [
         'Hosts'   =>'https://raw.githubusercontent.com/BurpSuite/CloudGate-List/master/Configuration.json',
         'Module'  =>'https://raw.githubusercontent.com/BurpSuite/RuleList/master/Module/Module',
-        'List'    =>'https://raw.githubusercontent.com/BurpSuite/RuleList/master/Example/Example.json',
+        'Example' =>'https://raw.githubusercontent.com/BurpSuite/RuleList/master/Example/Example.json',
+        'List'    =>'https://raw.githubusercontent.com/BurpSuite/RuleList/master/Default.json',
         'Host'    =>'https',
         'Version' =>'6.0'
     ];

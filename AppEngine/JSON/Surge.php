@@ -3,7 +3,7 @@
 header('Content-Disposition: attachment; filename='.'Surge');
 require_once "../Controller.php";
 
-@$Modules->GET().parse_str($REQUEST_QUERY_URI);
+@parse_str($Modules->GET());
 @$SubmitType->getSubmitInfoVerify($SubmitType->getSubmitInfoType($JSON),$EngineInfo);
 @$Rules->getRuleListInfo($SubmitType->getSubmitInfoList($CONFIGURATION));
 @$Auth->generateAuthKey();
@@ -18,10 +18,10 @@ echo "# \r\n";
 echo @$ProxyType->getServerInfo('Surge',$CONFIGURATION);
 echo @$ProxyType->getGroupInfo('Surge',$CONFIGURATION);
 
-$CONFIGURATION['General']['Rule']===true?$Proxy='Basic':$Proxy='Advanced';
-$CONFIGURATION['General']['USERAGENT']===true?$USERAGENT='USERAGENT':$USERAGENT='SKIP';
-$CONFIGURATION['General']['URLREGEX']===true?$URLREGEX='URLREGEX':$URLREGEX='SKIP';
-$CONFIGURATION['General']['IPCIDR6']===true?$IPCIDR6='IPCIDR6':$IPCIDR6='SKIP';
+@$CONFIGURATION['General']['Rule']===true?$Proxy='Basic':$Proxy='Advanced';
+@$CONFIGURATION['General']['USERAGENT']===true?$USERAGENT='USERAGENT':$USERAGENT='SKIP';
+@$CONFIGURATION['General']['URLREGEX']===true?$URLREGEX='URLREGEX':$URLREGEX='SKIP';
+@$CONFIGURATION['General']['IPCIDR6']===true?$IPCIDR6='IPCIDR6':$IPCIDR6='SKIP';
 
 echo $Rules->ruleReplace('Surge',$RuleLists['Apple'],$CONFIGURATION['SUFFIX']['Apple']);
 echo $Rules->ruleReplace('Surge',$RuleLists[$Proxy],$CONFIGURATION['SUFFIX']['Proxy']);

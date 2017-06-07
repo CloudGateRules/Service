@@ -3,7 +3,7 @@
 header('Content-Disposition: attachment; filename='.'Cross.Conf');
 require_once "../Controller.php";
 
-@$Modules->GET().parse_str($REQUEST_QUERY_URI);
+@parse_str($Modules->GET());
 @$SubmitType->getSubmitInfoVerify($SubmitType->getSubmitInfoType($JSON),$EngineInfo);
 @$Rules->getRuleListInfo($SubmitType->getSubmitInfoList($CONFIGURATION));
 @$Auth->generateAuthKey();
@@ -17,9 +17,9 @@ echo @$ProxyType->getGroupInfo('Cross',$CONFIGURATION);
 echo "[DNS]\r\n";
 echo @$ProxyType->getArgumentsInfo('Cross',$CONFIGURATION);
 
-$CONFIGURATION['General']['Rule']===true?$Proxy='Basic':$Proxy='Advanced';
-$CONFIGURATION['General']['USERAGENT']===true?$USERAGENT='USERAGENT':$USERAGENT='SKIP';
-$CONFIGURATION['General']['URLREGEX']===true?$URLREGEX='URLREGEX':$URLREGEX='SKIP';
+@$CONFIGURATION['General']['Rule']===true?$Proxy='Basic':$Proxy='Advanced';
+@$CONFIGURATION['General']['USERAGENT']===true?$USERAGENT='USERAGENT':$USERAGENT='SKIP';
+@$CONFIGURATION['General']['URLREGEX']===true?$URLREGEX='URLREGEX':$URLREGEX='SKIP';
 
 echo "[RULE]\r\n";
 echo $Rules->ruleReplace('Cross',$RuleLists['Apple'],$CONFIGURATION['SUFFIX']['Apple']);

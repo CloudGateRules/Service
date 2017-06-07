@@ -3,7 +3,7 @@
 header('Content-Disposition: attachment; filename='.'Potatso.Conf');
 require_once "../Controller.php";
 
-@$Modules->GET().parse_str($REQUEST_QUERY_URI);
+@parse_str($Modules->GET());
 @$SubmitType->getSubmitInfoVerify($SubmitType->getSubmitInfoType($JSON),$EngineInfo);
 @$Rules->getRuleListInfo($SubmitType->getSubmitInfoList($CONFIGURATION));
 @$Token->tokenGenerate();
@@ -18,7 +18,7 @@ echo "#  \r\n";
 echo "- name: CloudGate\r\n";
 echo "  rules:\r\n";
 
-$CONFIGURATION['General']['Rule']===true?$Proxy='Basic':$Proxy='Advanced';
+@$CONFIGURATION['General']['Rule']===true?$Proxy='Basic':$Proxy='Advanced';
 
 echo $Rules->ruleReplace('Potatso',$RuleLists['Apple'],$CONFIGURATION['SUFFIX']['Apple']);
 echo $Rules->ruleReplace('Potatso',$RuleLists[$Proxy],$CONFIGURATION['SUFFIX']['Proxy']);

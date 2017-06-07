@@ -3,7 +3,7 @@
 header('Content-Disposition: attachment; filename='.'A.BIG.T.Conf');
 require_once "../Controller.php";
 
-@$Modules->GET().parse_str($REQUEST_QUERY_URI);
+@parse_str($Modules->GET());
 @$SubmitType->getSubmitInfoVerify($SubmitType->getSubmitInfoType($JSON),$EngineInfo);
 @$Rules->getRuleListInfo($SubmitType->getSubmitInfoList($CONFIGURATION));
 @$Auth->generateAuthKey();
@@ -17,7 +17,7 @@ echo "# \r\n";
 echo @$ProxyType->getServerInfo('A.BIG.T',$CONFIGURATION);
 echo @$ProxyType->getGroupInfo('A.BIG.T',$CONFIGURATION);
 
-$CONFIGURATION['General']['Rule']===true?$Proxy='Basic':$Proxy='Advanced';
+@$CONFIGURATION['General']['Rule']===true?$Proxy='Basic':$Proxy='Advanced';
 
 echo $Rules->ruleReplace('A.BIG.T',$RuleLists['Apple'],$CONFIGURATION['SUFFIX']['Apple']);
 echo $Rules->ruleReplace('A.BIG.T',$RuleLists[$Proxy],$CONFIGURATION['SUFFIX']['Proxy']);

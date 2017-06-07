@@ -48,7 +48,7 @@ class Verify
             header('HTTP/1.1 400 Bad Request');
             exit('AuthKey Verify Failed! -3');
         }
-        return true;
+        return NULL;
     }
 
 }

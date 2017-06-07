@@ -4,7 +4,7 @@ class ProxyType
 {
 
     /**
-     * GET Split Arguments Info Result
+     * 获取参数状态以及配置信息
      * @param $SubmitData [RuleListDataInfo]
      * @return array [SplitDataInfo]
      */
@@ -49,7 +49,7 @@ class ProxyType
 
 
     /**
-     * GET Arguments Info Result
+     * 设置参数数据信息
      * @param $Format [ConfigurationFormatInfo]
      * @param $SubmitData [SubmitDataInfo]
      */
@@ -89,7 +89,7 @@ class ProxyType
 
 
     /**
-     * GET Server Info Result
+     * 获取服务器数据信息结果
      * @param $Format [ConfigurationFormatInfo]
      * @param $SubmitData [SubmitDataInfo]
      */
@@ -163,7 +163,7 @@ class ProxyType
 
 
     /**
-     * GET Group Info Result
+     * 获取组数据信息结果
      * @param $Format [ConfigurationFormatInfo]
      * @param $SubmitData [SubmitDataInfo]
      */
@@ -212,7 +212,7 @@ class ProxyType
 
 
     /**
-     * GET MITM Info Result
+     * 获取MITM数据信息结果
      * @param $SubmitData [SubmitDataInfo]
      * @param $RuleList [RuleListInfo]
      */
