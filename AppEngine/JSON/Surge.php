@@ -19,6 +19,7 @@ echo @$ProxyType->getServerInfo('Surge',$CONFIGURATION);
 echo @$ProxyType->getGroupInfo('Surge',$CONFIGURATION);
 
 @$CONFIGURATION['General']['Rule']===true?$Proxy='Basic':$Proxy='Advanced';
+@$CONFIGURATION['General']['PROCESS']===true?$PROCESS='PROCESS':$PROCESS='SKIP';
 @$CONFIGURATION['General']['USERAGENT']===true?$USERAGENT='USERAGENT':$USERAGENT='SKIP';
 @$CONFIGURATION['General']['URLREGEX']===true?$URLREGEX='URLREGEX':$URLREGEX='SKIP';
 @$CONFIGURATION['General']['IPCIDR6']===true?$IPCIDR6='IPCIDR6':$IPCIDR6='SKIP';
@@ -28,6 +29,7 @@ echo $Rules->ruleReplace('Surge',$RuleLists[$Proxy],$CONFIGURATION['SUFFIX']['Pr
 echo $Rules->ruleReplace('Surge',$RuleLists['DIRECT']);
 echo $Rules->ruleReplace('Surge',$RuleLists['REJECT']);
 echo $Rules->ruleReplace('Surge',$RuleLists['KEYWORD'],$CONFIGURATION['SUFFIX']['KEYWORD']);
+echo @$Rules->ruleReplace('Surge',$RuleLists[$PROCESS],$CONFIGURATION['SUFFIX']['PROCESS']);
 echo $Rules->ruleReplace('Surge',$RuleLists[$URLREGEX],$CONFIGURATION['SUFFIX']['URLREGEX']);
 echo $Rules->ruleReplace('Surge',$RuleLists[$USERAGENT],$CONFIGURATION['SUFFIX']['USERAGENT']);
 echo $Rules->ruleReplace('Surge',$RuleLists[$IPCIDR6],$CONFIGURATION['SUFFIX']['IPCIDR6']);
