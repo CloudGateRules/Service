@@ -23,6 +23,7 @@ echo @$ProxyType->getGroupInfo('Surge',$CONFIGURATION);
 @$CONFIGURATION['General']['USERAGENT']===true?$USERAGENT='USERAGENT':$USERAGENT='SKIP';
 @$CONFIGURATION['General']['URLREGEX']===true?$URLREGEX='URLREGEX':$URLREGEX='SKIP';
 @$CONFIGURATION['General']['IPCIDR6']===true?$IPCIDR6='IPCIDR6':$IPCIDR6='SKIP';
+@$CONFIGURATION['General']['Header']===true?$Header='Header':$Header='SKIP';
 
 echo $Rules->ruleReplace('Surge',$RuleLists['Apple'],$CONFIGURATION['SUFFIX']['Apple']);
 echo $Rules->ruleReplace('Surge',$RuleLists[$Proxy],$CONFIGURATION['SUFFIX']['Proxy']);
@@ -37,6 +38,7 @@ echo $Rules->ruleReplace('Surge',$RuleLists['IPCIDR'],$CONFIGURATION['SUFFIX']['
 echo $Rules->ruleReplace('Surge',$RuleLists['Other'],$CONFIGURATION['SUFFIX']['Other']);
 echo $Rules->ruleReplace('Surge',$RuleLists['Host']);
 echo $Rules->ruleReplace('Surge',$RuleLists['Rewrite'],null,AUTHKEY);
+echo $Rules->ruleReplace('Surge',$RuleLists[$Header],null,AUTHKEY);
 echo $ProxyType->getMitmInfo($CONFIGURATION,$RuleLists['MITM']);
 
 ?>

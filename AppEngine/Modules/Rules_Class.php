@@ -35,7 +35,7 @@ class Rules
      */
     public function getHostsInfo($EngineInfo)
     {
-        if(!empty($EngineInfo))
+        if(is_string($EngineInfo))
         {
             global $HostsList;
             $Modules   = new Modules;
@@ -80,6 +80,8 @@ class Rules
         {
             $Result.=$Subject[$i]."\r\n";
         }
+        $Result = preg_replace('/[\$$\r\n]+$/',"\r\n",$Result);
+        $Result = preg_replace('/(\$\$\r\n)/',', ',$Result);
         return $Result;
     }
 

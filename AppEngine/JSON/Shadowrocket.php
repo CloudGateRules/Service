@@ -16,6 +16,7 @@ echo "# Download Time: " . date("Y-m-d H:i:s") . "\r\n";
 echo "# \r\n";
 
 @$CONFIGURATION['General']['Rule']===true?$Proxy='Basic':$Proxy='Advanced';
+@$CONFIGURATION['General']['Header']===true?$Header='Header':$Header='SKIP';
 
 echo $Rules->ruleReplace('Shadowrocket',$RuleLists['Apple'],$CONFIGURATION['SUFFIX']['Apple']);
 echo $Rules->ruleReplace('Shadowrocket',$RuleLists[$Proxy],$CONFIGURATION['SUFFIX']['Proxy']);
@@ -26,6 +27,7 @@ echo $Rules->ruleReplace('Shadowrocket',$RuleLists['IPCIDR'],$CONFIGURATION['SUF
 echo $Rules->ruleReplace('Shadowrocket',$RuleLists['Other'],$CONFIGURATION['SUFFIX']['Other']);
 echo $Rules->ruleReplace('Shadowrocket',$RuleLists['Host']);
 echo $Rules->ruleReplace('Shadowrocket',$RuleLists['Rewrite'],null,AUTHKEY);
+echo $Rules->ruleReplace('Shadowrocket',$RuleLists[$Header],null,AUTHKEY);
 echo $ProxyType->getMitmInfo($CONFIGURATION,$RuleLists['MITM']);
 
 ?>

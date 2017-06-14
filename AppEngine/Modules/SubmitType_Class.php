@@ -46,7 +46,7 @@ class SubmitType
                 $SubmitVersion = $SubmitData['Configuration']['Version'];
                 header('Location: '."$Host://".$_SERVER['SERVER_NAME']."/Old/$SubmitVersion".$_SERVER['REQUEST_URI']);
             }
-            elseif(!empty($SubmitData['Other']['List']))
+            elseif(is_array($SubmitData))
             {
                 global $CONFIGURATION;
                 $CONFIGURATION = $SubmitData;
